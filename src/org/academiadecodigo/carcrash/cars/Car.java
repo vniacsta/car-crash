@@ -13,9 +13,9 @@ abstract public class Car {
         pos = new Position();
     }
 
-    // creating a method to move cars
+    // call the method to update the position of each car
     public void moveCar() {
-
+        pos.updatePosition();
     }
 
     // getter available in the skeleton

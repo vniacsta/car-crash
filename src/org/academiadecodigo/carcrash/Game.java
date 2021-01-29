@@ -58,5 +58,9 @@ public class Game {
     // ask cars to move
     private void moveAllCars() {
 
+        // ask all cars to move
+        for (int i = 0; i < cars.length; i++) {
+            cars[i].moveCar();
+        }
     }
 }
