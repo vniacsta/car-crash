@@ -55,11 +55,28 @@ public class Game {
         }
     }
 
-    // ask cars to move
+    // ask cars to move and check for collision
     private void moveAllCars() {
 
-        // ask all cars to move
+        // iterate through all cars
         for (int i = 0; i < cars.length; i++) {
+
+            // check position to crash the cars
+            for (int j = 0; j < cars.length; j++) {
+
+                // this corrects the car color - otherwise they are all red
+                if (i == j) {
+                    continue;
+                }
+
+                // checks if the position between each car is the same, if true there's a crash
+                if (cars[i].getPos().checkPosition(cars[j].getPos())) {
+                    cars[i].crashed();
+                    cars[j].crashed();
+                }
+            }
+
+            // make the cars move
             cars[i].moveCar();
         }
     }

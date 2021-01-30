@@ -9,7 +9,15 @@ public class CarFactory {
     // method to be called by game
     public static Car getNewCar() {
 
-        // create my car instance
-        return new SmartCar();
+        int randomCar = (int) (Math.random() * 3);
+
+        switch (randomCar) {
+            case 0:
+                return new SmartCar();
+            case 1:
+                return new TeslaCar();
+            default:
+                return new GiuliettaCar();
+        }
     }
 }

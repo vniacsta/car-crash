@@ -45,7 +45,6 @@ public final class Field {
         screenWriter.setForegroundColor(Terminal.Color.WHITE);
 
         screen.startScreen();
-
     }
 
     /**
@@ -63,11 +62,8 @@ public final class Field {
             } else {
                 screen.putString(c.getPos().getCol(), c.getPos().getRow(), c.toString(), Terminal.Color.WHITE, Terminal.Color.RED, ScreenCharacterStyle.Blinking);
             }
-
         }
-
         screen.refresh();
-
     }
 
     public static int getWidth() {
