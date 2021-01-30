@@ -15,38 +15,22 @@ public class Position {
 
     // methods to move cars
     public void moveRight() {
-        if (col + 1 < Field.getWidth()) {
-            col++;
-        } else {
-            col = Field.getWidth() - 1;
-        }
+        col++;
     }
 
     public void moveLeft() {
-        if (col - 1 > 0) {
-            col--;
-        } else {
-            col = 0;
-        }
+        col--;
     }
 
     public void moveDown() {
-        if (row + 1 < Field.getHeight()) {
-            row++;
-        } else {
-            row = Field.getHeight() - 1;
-        }
+        row++;
     }
 
     public void moveUp() {
-        if (row - 1 > 0) {
-            col--;
-        } else {
-            col = 0;
-        }
+        row--;
     }
 
-    public void moveWithinLimit() {
+    public void move() {
 
         // cars will move in random directions
         int randomDirections = (int) (Math.random() * 4);
@@ -64,6 +48,32 @@ public class Position {
             default:
                 moveUp();
                 break;
+        }
+    }
+
+    // check if the car is in the field edges
+    public boolean isEdge() {
+        return col == Field.getWidth() - 1 || col == 0 || row == Field.getHeight() - 1 ||
+                row == 0;
+    }
+
+    // change direction if car is on edge
+    public void changeDirection() {
+
+        if (col == Field.getWidth() - 1) {
+            moveLeft();
+        }
+
+        if (col == 0) {
+            moveRight();
+        }
+
+        if (row == Field.getHeight() - 1) {
+            moveUp();
+        }
+
+        if (row == 0) {
+            moveDown();
         }
     }
 

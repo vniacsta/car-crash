@@ -15,14 +15,25 @@ abstract public class Car {
         crashed = false;
     }
 
-    // call the method to update the position of each car
-    public void moveCar() {
-        pos.moveWithinLimit();
-    }
-
     // method to change crashed to true
     public void crashed() {
         this.crashed = true;
+    }
+
+    // method to update the position of each car - called in game
+    public void moveCar() {
+
+        // crashed cars can not move
+        if (isCrashed()) {
+            return;
+        }
+
+        // change direction if cars bump against the wall
+        if (pos.isEdge()) {
+            pos.changeDirection();
+        }
+
+        pos.move();
     }
 
     // getter available in the skeleton
