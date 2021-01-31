@@ -13,11 +13,11 @@ public class CarFactory {
 
         switch (randomCar) {
             case 0:
-                return new SmartCar();
+                return new SmartCar(1, 'S');
             case 1:
-                return new TeslaCar();
+                return new TeslaCar(3, 'T');
             default:
-                return new GiuliettaCar();
+                return new GiuliettaCar(2, 'G');
         }
     }
 }

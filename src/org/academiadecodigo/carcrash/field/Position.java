@@ -14,39 +14,55 @@ public class Position {
     }
 
     // methods to move cars
-    public void moveRight() {
-        col++;
+    public void moveRight(int speed) {
+        if (col + speed < Field.getWidth()) {
+            col += speed;
+        } else {
+            col = Field.getWidth() - 1;
+        }
     }
 
-    public void moveLeft() {
-        col--;
+    public void moveLeft(int speed) {
+        if (col - speed > 0) {
+            col -= speed;
+        } else {
+            col = 0;
+        }
     }
 
-    public void moveDown() {
-        row++;
+    public void moveDown(int speed) {
+        if (row + speed < Field.getHeight()) {
+            row += speed;
+        } else {
+            row = Field.getHeight() - 1;
+        }
     }
 
-    public void moveUp() {
-        row--;
+    public void moveUp(int speed) {
+        if (row - speed > 0) {
+            row -= speed;
+        } else {
+            row = 0;
+        }
     }
 
-    public void move() {
+    public void move(int speed) {
 
         // cars will move in random directions
         int randomDirections = (int) (Math.random() * 4);
         // assign directions to random
         switch (randomDirections) {
             case 0:
-                moveRight();
+                moveRight(speed);
                 break;
             case 1:
-                moveLeft();
+                moveLeft(speed);
                 break;
             case 2:
-                moveDown();
+                moveDown(speed);
                 break;
             default:
-                moveUp();
+                moveUp(speed);
                 break;
         }
     }
@@ -61,19 +77,19 @@ public class Position {
     public void changeDirection() {
 
         if (col == Field.getWidth() - 1) {
-            moveLeft();
+            col--; // move left
         }
 
         if (col == 0) {
-            moveRight();
+            col++; // move right
         }
 
         if (row == Field.getHeight() - 1) {
-            moveUp();
+            row--; // move up
         }
 
         if (row == 0) {
-            moveDown();
+            row++; // move down
         }
     }
 
